@@ -1,7 +1,5 @@
-# mvc/controllers/login.py
-
 import web
-from pymongo import MongoClient
+from mvc.models.safecheck import DirectorModel
 
 render = web.template.render('mvc/views/', base="layout")
 
@@ -14,17 +12,12 @@ class Login:
         username = form.username
         password = form.password
 
-        try:
-            client = MongoClient('mongodb://localhost:27017/')
-            db = client['safecheckschool']
-            collection = db['directores']
-            director = collection.find_one({"username": username, "password_md5": password})
-            
-            if director:
-                # Director encontrado, iniciar sesión
-                return "Bienvenido {}".format(director["nombre"])
-            else:
-                # Director no encontrado, mostrar mensaje de error
-                return "Nombre de usuario o contraseña incorrectos."
-        except Exception as e:
-            return "Error: {}".format(e)
+        model = DirectorModel()
+        director = model.get_director_by_username(username)
+
+        if director and director['password_md5'] == password:
+            # Director encontrado y contraseña correcta, redirigir al usuario a la vista index
+            return render.index(director=director)  # Pasar el director como un parámetro nombrado
+        else:
+            # Director no encontrado o contraseña incorrecta, mostrar mensaje de error
+            return "Nombre de usuario o contraseña incorrectos."
