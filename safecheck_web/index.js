@@ -15,7 +15,7 @@ conexion()
         // Ruta para obtener todos los documentos de la colección docentes
         app.get("/", async (req, res) => {
             try {
-                const docentes = await mongoose.connection.collection("docentes").find().toArray();
+                const docentes = await mongoose.connection.collection("directores").find().toArray();
                 res.json(docentes);
             } catch (error) {
                 console.error("Error al obtener los docentes:", error);

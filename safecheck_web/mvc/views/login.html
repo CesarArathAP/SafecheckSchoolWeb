@@ -5,13 +5,13 @@ $def with ()
         <div class="card-body">
             <h5 class="card-title text-center">Iniciar Sesión</h5>
             <img src="../../static/images/logo.png" class="img-fluid mx-auto d-block" alt="Imagen de inicio de sesión">
-            <form>
+            <form action="/login" method="post">
                 <div class="mb-3">
-                    <label for="username" class="form-label">Nombre de Usuario</label>
+                    <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Ingrese su nombre de usuario" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
+                    <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
                 </div>
                 <div class="d-grid">

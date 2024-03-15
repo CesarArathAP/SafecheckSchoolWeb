@@ -1,7 +1,8 @@
 import web
 
 urls = (
-    '/', 'mvc.controllers.login.Login'
+    '/', 'mvc.controllers.login.Login',
+    '/login', 'mvc.controllers.login.Login'
 )
 
 app = web.application(urls, globals())
