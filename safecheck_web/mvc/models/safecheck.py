@@ -1,5 +1,3 @@
-# mvc/models/safecheck.py
-
 from pymongo import MongoClient
 
 class DirectorModel:
