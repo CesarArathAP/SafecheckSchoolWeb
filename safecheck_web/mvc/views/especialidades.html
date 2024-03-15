@@ -1,0 +1,19 @@
+$def with (especialidades)
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-primary mb-4">Especialidades</h2>
+        </div>
+        $for especialidad in especialidades
+        <div class="col-md-6">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">$especialidad['nombre']</h5>
+                    <p class="card-text">$especialidad['nivel']</p>
+                    <a href="/lista_alumnos/$especialidad" class="btn btn-primary">Ver Alumnos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

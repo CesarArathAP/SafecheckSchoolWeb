@@ -1,0 +1,36 @@
+$def with(alumnos)
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h3>Lista de Alumnos</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Correo Electrónico</th>
+                        <th>Grupo</th>
+                        <th>NSS</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    $for alumno in alumnos:
+                    <tr>
+                        <td>$alumno['matricula']</td>
+                        <td>$alumno['nombre']</td>
+                        <td>$alumno['apellido_paterno']</td>
+                        <td>$alumno['apellido_materno']</td>
+                        <td>$alumno['correo_electronico']</td>
+                        <td>$alumno['grupo']</td>
+                        <td>$alumno['nss']</td>
+                        <td>$alumno['estado']</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

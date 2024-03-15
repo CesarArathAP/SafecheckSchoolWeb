@@ -17,7 +17,7 @@ $def with(director)
                                 <a class="nav-link" href="#">Visitar a la Universidad</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Nuevo Docente</a>
+                                <a class="nav-link" href="#">Nuevo Registro</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Notificaciones</a>
@@ -37,7 +37,7 @@ $def with(director)
     <div class="row">
         $for carrera in director['carreras']
             <div class="col-md-6">
-                <a href="#" class="card bg-light mb-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                <a href="/especialidades/$carrera['id']" class="card bg-light mb-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
                     <div class="card-body">
                         <h5 class="card-title text-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">$carrera['nombre']</h5>
                     </div>
