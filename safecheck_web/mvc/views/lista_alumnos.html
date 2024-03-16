@@ -3,7 +3,7 @@ $def with(alumnos)
 <div class="container mt-5">
     <div class="row">
         <div class="col">
-            <h3>Lista de Alumnos</h3>
+            <h3>Lista de Alumnos de la Carrera</h3>
             <table class="table">
                 <thead>
                     <tr>
@@ -19,16 +19,16 @@ $def with(alumnos)
                 </thead>
                 <tbody>
                     $for alumno in alumnos:
-                    <tr>
-                        <td>$alumno['matricula']</td>
-                        <td>$alumno['nombre']</td>
-                        <td>$alumno['apellido_paterno']</td>
-                        <td>$alumno['apellido_materno']</td>
-                        <td>$alumno['correo_electronico']</td>
-                        <td>$alumno['grupo']</td>
-                        <td>$alumno['nss']</td>
-                        <td>$alumno['estado']</td>
-                    </tr>
+                        <tr>
+                            <td>$alumno['matricula']</td>
+                            <td>$alumno['nombre']</td>
+                            <td>$alumno['apellido_paterno']</td>
+                            <td>$alumno['apellido_materno']</td>
+                            <td>$alumno['correo_electronico']</td>
+                            <td>$alumno['grupo']</td>
+                            <td>$alumno['nss']</td>
+                            <td>$alumno['estado']</td>
+                        </tr>
                 </tbody>
             </table>
         </div>

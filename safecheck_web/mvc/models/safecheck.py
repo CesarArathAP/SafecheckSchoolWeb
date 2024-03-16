@@ -22,4 +22,11 @@ class EspecialidadesModel:
         return []
     
     def get_alumnos_by_especialidad(self, especialidad_id):
-        return self.collection.find({"especialidad_id": especialidad_id})
+        # Busca una especialidad por su id
+        especialidad = self.collection.find_one({"especialidades.id": especialidad_id})
+        if especialidad:
+            # Encuentra la lista de alumnos dentro de la especialidad
+            for esp in especialidad['especialidades']:
+                if esp['id'] == especialidad_id:
+                    return esp.get('alumnos', [])
+        return []
