@@ -15,12 +15,13 @@ $def with(alumnos)
                         <th>Grupo</th>
                         <th>NSS</th>
                         <th>Estado</th>
+                        <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     $for alumno in alumnos:
                         <tr>
-                            <td>$alumno['matricula']</td>
+                            <td><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">$alumno['matricula']</a></td>
                             <td>$alumno['nombre']</td>
                             <td>$alumno['apellido_paterno']</td>
                             <td>$alumno['apellido_materno']</td>
@@ -28,6 +29,9 @@ $def with(alumnos)
                             <td>$alumno['grupo']</td>
                             <td>$alumno['nss']</td>
                             <td>$alumno['estado']</td>
+                            <td>
+                                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">Generar Reporte</a>
+                            </td>
                         </tr>
                 </tbody>
             </table>
