@@ -8,6 +8,7 @@ class SafeCheck:
         self.carreras_collection = self.db['carreras']
         self.visitas_collection = self.db['visitas']
         self.docentes_collection = self.db['docentes']
+        self.policias_collection = self.db['policias']
 
     def get_director_by_username(self, username):
         return self.directores_collection.find_one({"username": username})
@@ -56,3 +57,19 @@ class SafeCheck:
         except Exception as e:
             print("Error al registrar docente:", e)
         return False  # Retorna False si ocurrió un error durante el registro
+
+    def registrar_policia(self, nombre, apellidos, telefono, username, password):
+        policia_data = {
+            "nombre": nombre,
+            "apellidos": apellidos,
+            "telefono": telefono,
+            "username": username,
+            "password": password
+        }
+
+        try:
+            self.policias_collection.insert_one(policia_data)
+            return True  # Retorna True si el registro fue exitoso
+        except Exception as e:
+            print("Error al registrar policía:", e)
+            return False  # Retorna False si ocurrió un error durante el registro
