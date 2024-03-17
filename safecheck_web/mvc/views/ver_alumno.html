@@ -1,10 +1,10 @@
-$def with (especialidades)
+$def with(alumno)
 
 <div class="container-fluid bg-primary text-white p-3 mb-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h2 class="m-0">Especialidades</h2>
+                <h2 class="m-0">Consultar Alumno</h2>
             </div>
             <div class="col-md-6 text-md-end">
                 <nav class="navbar navbar-expand-md navbar-dark">
@@ -37,15 +37,18 @@ $def with (especialidades)
 </div>
 <div class="container mt-5">
     <div class="row">
-        $for especialidad in especialidades:
-            <div class="col-md-6">
-                <div class="card bg-light mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">$especialidad['nombre']</h5>
-                        <p class="card-text">$especialidad['nivel']</p>
-                        <a href="/alumnos/$especialidad['id']" class="btn btn-primary">Ver Alumnos</a>
-                    </div>
+        <div class="col">
+            <h1>Detalle del Alumno</h1>
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">Matrícula: $alumno['matricula']</p>
+                    <p class="card-text">Nombre: $alumno['nombre'] $alumno['apellido_paterno'] $alumno['apellido_materno']</p>
+                    <p class="card-text">Correo Electrónico: $alumno['correo_electronico']</p>
+                    <p class="card-text">Grupo: $alumno['grupo']</p>
+                    <p class="card-text">NSS: $alumno['nss']</p>
+                    <p class="card-text">Estado: $alumno['estado']</p>
                 </div>
             </div>
+        </div>
     </div>
 </div>

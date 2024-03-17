@@ -1,5 +1,5 @@
 import web
-from mvc.models.safecheck import DirectorModel
+from mvc.models.safecheck import SafeCheck
 
 render = web.template.render('mvc/views/', base="layout")
 
@@ -12,7 +12,7 @@ class Login:
         username = form.username
         password = form.password
 
-        model = DirectorModel()
+        model = SafeCheck()
         director = model.get_director_by_username(username)
 
         if director and director['password_md5'] == password:
@@ -20,4 +20,4 @@ class Login:
             return render.index(director=director)  # Pasar el director como un parámetro nombrado
         else:
             # Director no encontrado o contraseña incorrecta, mostrar mensaje de error
-            return "Nombre de usuario o contraseña incorrectos."
+            return render.password_incorrect()
