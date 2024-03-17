@@ -7,6 +7,7 @@ urls = (
     '/new/new_docente', 'mvc.controllers.docente_registration.DocenteRegistration',
     '/new/new_vigilante', 'mvc.controllers.vigilancia_registration.VigilanciaRegistration',
     '/docente_registration', 'mvc.controllers.docente_registration.DocenteRegistration',
+    '/vigilancia_registration', 'mvc.controllers.vigilancia_registration.VigilanciaRegistration',
     r'/visitas', 'mvc.controllers.visitas.Visitas',
     '/notifications', 'mvc.controllers.notifications.Notifications',
     r'/especialidades/(\d+)', 'mvc.controllers.especialidades.Especialidades',
