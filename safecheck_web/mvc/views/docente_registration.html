@@ -1,8 +1,10 @@
+$def with()
+
 <div class="container-fluid bg-primary text-white p-3 mb-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h2 class="m-0">Nuevo Docente</h2>
+                <h2 class="m-0"><img src="/static/images/icons/profesor.png" style="max-width: 50px; filter: grayscale(100%);">Registro de Docente</h2>
             </div>
             <div class="col-md-6 text-md-end">
                 <nav class="navbar navbar-expand-md navbar-dark">
@@ -35,51 +37,115 @@
 </div>
 
 <div class="container">
-    <div class="card">
+    <div class="card shadow">
         <div class="card-body">
-            <h1 class="card-title mb-4 text-center"><i class="fas fa-chalkboard-teacher"></i> Registro de Docente</h1>
-            <form action="#" method="post">
-                <div class="form-group">
-                    <label for="nombre">Nombre:</label>
+            <form action="/docente_registration" method="post">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="apellido1">Primer Apellido:</label>
-                    <input type="text" class="form-control" id="apellido1" name="apellido1" required>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="apellido1" class="form-label">Primer Apellido:</label>
+                            <input type="text" class="form-control" id="apellido1" name="apellido1" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="apellido2" class="form-label">Segundo Apellido:</label>
+                            <input type="text" class="form-control" id="apellido2" name="apellido2" required>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="apellido2">Segundo Apellido:</label>
-                    <input type="text" class="form-control" id="apellido2" name="apellido2" required>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="correo">Correo:</label>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo:</label>
                     <input type="email" class="form-control" id="correo" name="correo" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="contrasena">Contraseña:</label>
-                    <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="contrasena" class="form-label">Contraseña:</label>
+                            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="num_trabajador" class="form-label">Número de Trabajador:</label>
+                            <input type="text" class="form-control" id="num_trabajador" name="num_trabajador" required>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="num_trabajador">Número de Trabajador:</label>
-                    <input type="text" class="form-control" id="num_trabajador" name="num_trabajador" required>
+                <div class="mb-3">
+                    <label class="form-label">Carrera:</label>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera1" name="carrera[]" value="1">
+                                <label class="form-check-label" for="carrera1">Diseño Digital</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera2" name="carrera[]" value="2">
+                                <label class="form-check-label" for="carrera2">Energías Renovables</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera3" name="carrera[]" value="3">
+                                <label class="form-check-label" for="carrera3">Industrial</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera4" name="carrera[]" value="4">
+                                <label class="form-check-label" for="carrera4">Mecatrónica</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera5" name="carrera[]" value="5">
+                                <label class="form-check-label" for="carrera5">Nanotecnología</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera6" name="carrera[]" value="6">
+                                <label class="form-check-label" for="carrera6">TIC</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera7" name="carrera[]" value="7">
+                                <label class="form-check-label" for="carrera7">Criminalista</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera8" name="carrera[]" value="8">
+                                <label class="form-check-label" for="carrera8">Contaduría</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera9" name="carrera[]" value="9">
+                                <label class="form-check-label" for="carrera9">Desarrollo de Negocios</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera10" name="carrera[]" value="10">
+                                <label class="form-check-label" for="carrera10">Terapia Física</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera11" name="carrera[]" value="11">
+                                <label class="form-check-label" for="carrera11">Lic. Enfermería</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera12" name="carrera[]" value="12">
+                                <label class="form-check-label" for="carrera12">Lic. Salud Reproductiva</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>                                              
+                <div class="d-grid gap-2 d-md-block text-end">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='/new'">Cancelar</button>
                 </div>
-
-                <div class="form-group">
-                    <label for="carrera">Carrera:</label>
-                    <select class="form-control" id="carrera" name="carrera">
-                        <option value="ingenieria_sistemas">Ingeniería de Sistemas</option>
-                        <option value="medicina">Medicina</option>
-                        <option value="psicologia">Psicología</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <button type="button" class="btn btn-secondary" onclick="window.location.href='cancelar.html'">Cancelar</button>
             </form>
         </div>
     </div>

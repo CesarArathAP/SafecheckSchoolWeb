@@ -7,6 +7,7 @@ class SafeCheck:
         self.directores_collection = self.db['directores']
         self.carreras_collection = self.db['carreras']
         self.visitas_collection = self.db['visitas']
+        self.docentes_collection = self.db['docentes']
 
     def get_director_by_username(self, username):
         return self.directores_collection.find_one({"username": username})
@@ -32,9 +33,26 @@ class SafeCheck:
                         return alumno
         return None
 
-    def obtener_visitas(self):
+    def registrar_docente(self, nombre, apellido1, apellido2, correo, contrasena, num_trabajador, carreras):
+        docente_data = {
+            "nombre": nombre,
+            "apellido_paterno": apellido1,
+            "apellido_materno": apellido2,
+            "correo": correo,
+            "contrasena": contrasena,
+            "num_trabajador": num_trabajador,
+            "carreras": []  # Inicializar lista de carreras
+        }
+
+        # Agregar las carreras seleccionadas al documento del docente
+        for carrera in carreras:
+            carrera_data = self.obtener_datos_carrera(carrera['id'])  # Obtener datos de la carrera por su ID
+            if carrera_data:
+                docente_data['carreras'].append({"id": carrera['id'], "nombre": carrera_data['nombre']})
+
         try:
-            return list(self.visitas_collection.find())
+            self.docentes_collection.insert_one(docente_data)
+            return True  # Retorna True si el registro fue exitoso
         except Exception as e:
-            print("Error al obtener las visitas:", e)
-        return []
+            print("Error al registrar docente:", e)
+        return False  # Retorna False si ocurrió un error durante el registro
