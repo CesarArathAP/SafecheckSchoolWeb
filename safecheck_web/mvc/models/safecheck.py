@@ -34,6 +34,14 @@ class SafeCheck:
                         return alumno
         return None
 
+    def obtener_visitas(self):
+        try:
+            visitas = list(self.visitas_collection.find())
+            return visitas
+        except Exception as e:
+            print("Error al obtener las visitas:", e)
+        return[]
+
     def registrar_docente(self, nombre, apellido1, apellido2, correo, contrasena, num_trabajador, carreras):
         docente_data = {
             "nombre": nombre,
@@ -60,16 +68,17 @@ class SafeCheck:
 
     def registrar_policia(self, nombre, apellidos, telefono, username, password):
         policia_data = {
-            "nombre": nombre,
-            "apellidos": apellidos,
-            "telefono": telefono,
-            "username": username,
+             "nombre": nombre,
+             "apellidos": apellidos,
+             "telefono": telefono,
+             "username": username,
             "password": password
-        }
+         }
 
         try:
             self.policias_collection.insert_one(policia_data)
             return True  # Retorna True si el registro fue exitoso
         except Exception as e:
             print("Error al registrar policía:", e)
-            return False  # Retorna False si ocurrió un error durante el registro
+        return False  # Retorna False si ocurrió un error durante el registro
+
