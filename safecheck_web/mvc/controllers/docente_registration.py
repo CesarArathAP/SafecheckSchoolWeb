@@ -18,10 +18,28 @@ class DocenteRegistration:
         email = form.email
         username = form.username
         password_md5 = form.password_md5
-        # Obtener carreras y dividirlas en una lista
-        carreras = [carrera.strip() for carrera in form.get('carrera', '').split('\r\n') if carrera.strip()]
-        # Formatear carreras como lista de objetos
-        carreras_objects = [{"nombre": carrera} for carrera in carreras]
+        
+        # Obtener carreras seleccionadas
+        carreras_seleccionadas = [carrera.strip() for carrera in form.get('carrera', '').split('\r\n') if carrera.strip()]
+        
+        # Lista predefinida de carreras con sus IDs
+        carreras_disponibles = {
+            "Diseño Digital": 1,
+            "Energias Renovables": 2,
+            "Industrial": 3,
+            "Mecatrónica": 4,
+            "Nanotecnología": 5,
+            "TIC": 6,
+            "Criminalística": 7,
+            "Contaduría": 8,
+            "Desarrollo de Negocios": 9,
+            "Terapia Física": 10,
+            "Lic. Enfermería": 11,
+            "Lic. Salud Reproductiva": 12
+        }
+        
+        # Obtener los IDs de las carreras seleccionadas
+        carreras_objects = [{"id": carreras_disponibles[carrera], "nombre": carrera} for carrera in carreras_seleccionadas]
        
         if model.registrar_docente(nombre, apellido_paterno, apellido_materno, telefono, nss, email, username, password_md5, carreras_objects):
             raise web.seeother('/new')  
