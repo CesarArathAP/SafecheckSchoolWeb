@@ -48,14 +48,14 @@ $def with()
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="apellido1" class="form-label">Primer Apellido:</label>
-                            <input type="text" class="form-control" id="apellido1" name="apellido1" required>
+                            <label for="apellido_paterno" class="form-label">Apellido Paterno:</label>
+                            <input type="text" class="form-control" id="apellido_paterno" name="apellido_paterno" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="apellido2" class="form-label">Segundo Apellido:</label>
-                            <input type="text" class="form-control" id="apellido2" name="apellido2" required>
+                            <label for="apellido_materno" class="form-label">Apellido Materno:</label>
+                            <input type="text" class="form-control" id="apellido_materno" name="apellido_materno" required>
                         </div>
                     </div>
                 </div>
@@ -66,21 +66,26 @@ $def with()
                 </div>
 
                 <div class="mb-3">
-                    <label for="correo" class="form-label">Correo:</label>
-                    <input type="email" class="form-control" id="correo" name="correo" required>
+                    <label for="nss" class="form-label">NSS:</label>
+                    <input type="text" class="form-control" id="nss" name="nss" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="contrasena" class="form-label">Contraseña:</label>
-                            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                            <label for="username" class="form-label">Nombre de usuario:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="num_trabajador" class="form-label">Número de Trabajador:</label>
-                            <input type="text" class="form-control" id="num_trabajador" name="num_trabajador" required>
+                            <label for="password_md5" class="form-label">Contraseña:</label>
+                            <input type="password" class="form-control" id="password_md5" name="password_md5" required>
                         </div>
                     </div>
                 </div>
@@ -90,58 +95,60 @@ $def with()
                     <div class="row">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera1" name="carrera[]" value="1">
+                                <input class="form-check-input" type="checkbox" id="carrera1" name="carrera[]" value="Diseño Digital" onchange="updateSelectedCarreras()">
                                 <label class="form-check-label" for="carrera1">Diseño Digital</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera2" name="carrera[]" value="2">
-                                <label class="form-check-label" for="carrera2">Energías Renovables</label>
+                                <input class="form-check-input" type="checkbox" id="carrera2" name="carrera[]" value="Energias Renovables" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Energias Renovables</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera3" name="carrera[]" value="3">
-                                <label class="form-check-label" for="carrera3">Industrial</label>
+                                <input class="form-check-input" type="checkbox" id="carrera3" name="carrera[]" value="Industrial" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Industrial</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera4" name="carrera[]" value="4">
-                                <label class="form-check-label" for="carrera4">Mecatrónica</label>
+                                <input class="form-check-input" type="checkbox" id="carrera4" name="carrera[]" value="Mecatrónica" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Mecatrónica</label>
+                            </div>       
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera5" name="carrera[]" value="Nanotecnología" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Nanotecnología</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera5" name="carrera[]" value="5">
-                                <label class="form-check-label" for="carrera5">Nanotecnología</label>
+                                <input class="form-check-input" type="checkbox" id="carrera6" name="carrera[]" value="TIC" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">TIC</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera6" name="carrera[]" value="6">
-                                <label class="form-check-label" for="carrera6">TIC</label>
+                                <input class="form-check-input" type="checkbox" id="carrera7" name="carrera[]" value="Criminalística" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Criminalística</label>
                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera8" name="carrera[]" value="Contaduría" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Contaduría</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera9" name="carrera[]" value="Desarrollo de Negocios" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Desarrollo de Negocios</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera10" name="carrera[]" value="Terapia Física" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Terapia Física</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera11" name="carrera[]" value="Lic. Enfermería" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Lic. Enfermería</label>
+                            </div>    
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="carrera12" name="carrera[]" value="Lic. Salud Reproductiva" onchange="updateSelectedCarreras()">
+                                <label class="form-check-label" for="carrera2">Lic. Salud Reproductiva</label>
+                            </div>                  
                         </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera7" name="carrera[]" value="7">
-                                <label class="form-check-label" for="carrera7">Criminalista</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera8" name="carrera[]" value="8">
-                                <label class="form-check-label" for="carrera8">Contaduría</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera9" name="carrera[]" value="9">
-                                <label class="form-check-label" for="carrera9">Desarrollo de Negocios</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera10" name="carrera[]" value="10">
-                                <label class="form-check-label" for="carrera10">Terapia Física</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera11" name="carrera[]" value="11">
-                                <label class="form-check-label" for="carrera11">Lic. Enfermería</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="carrera12" name="carrera[]" value="12">
-                                <label class="form-check-label" for="carrera12">Lic. Salud Reproductiva</label>
-                            </div>
-                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Carreras seleccionadas:</label>
+                            <textarea class="form-control" id="carreraSeleccionada" name="carrera" readonly></textarea>
+                        </div>                        
                     </div>
-                </div>                                              
+                </div>                                                                               
                 <div class="d-grid gap-2 d-md-block text-end">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                     <button type="button" class="btn btn-secondary" onclick="window.location.href='/new'">Cancelar</button>
