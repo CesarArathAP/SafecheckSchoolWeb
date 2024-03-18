@@ -12,6 +12,7 @@ class SafeCheck:
         self.carreras_collection = self.db['carreras']
         self.visitas_collection = self.db['visitas']
         self.docentes_collection = self.db['docentes']
+        self.vigilancia_collection = self.db['vigilancia']
     # METODO PARA INCIAR SESION COMO DIRECTOR
     def get_director_by_username(self, username):
         return self.directores_collection.find_one({"username": username})
@@ -77,3 +78,18 @@ class SafeCheck:
             if not self.docentes_collection.find_one({"id": new_id}):  # Verificar si el id ya está en uso
                 return new_id
     # METODO PARA REGISTRAR A UN OFICIAL DE POLICIA
+    def registrar_policia(self, nombre, apellidos, telefono, username, password):
+        # Crear el documento del policía
+        policia_data = {
+            "nombre": nombre,
+            "apellidos": apellidos,
+            "telefono": telefono,
+            "username": username,
+            "password": password
+        }
+        try:
+            self.vigilancia_collection.insert_one(policia_data)
+            return True  # Retorna True si el registro fue exitoso
+        except PyMongoError as e:
+            print("Error al registrar policía:", e)
+            return False  # Retorna False si ocurrió un error durante el registro
