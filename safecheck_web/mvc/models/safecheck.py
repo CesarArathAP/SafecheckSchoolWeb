@@ -1,3 +1,5 @@
+import random
+from bson import ObjectId
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 
@@ -43,16 +45,21 @@ class SafeCheck:
             print("Error al obtener las visitas:", e)
             return []
     # METODO PARA REGISTRAR A UN DOCENTE NUEVO Y ASIGNAR UNA O VARIAS CARRERAS
-    def registrar_docente(self, nombre, apellido1, apellido2, telefono, nss, correo, username, contrasena, carreras):
+    def registrar_docente(self, nombre, apellido_paterno, apellido_materno, telefono, nss, correo, username, password_md5, carreras):
+        # Generar un nuevo id único de dos dígitos
+        new_id = self.obtener_proximo_id()
+        
+        # Crear el documento del docente con el nuevo id
         docente_data = {
+            "id": new_id,
             "nombre": nombre,
-            "apellido_paterno": apellido1,
-            "apellido_materno": apellido2,
+            "apellido_paterno": apellido_paterno,
+            "apellido_materno": apellido_materno,
             "telefono": telefono,
             "nss": nss,
             "email": correo,
             "username": username,
-            "password_md5": contrasena,
+            "password_md5": password_md5,
             "carreras": carreras
         }
 
@@ -62,4 +69,11 @@ class SafeCheck:
         except PyMongoError as e:
             print("Error al registrar docente:", e)
             return False  # Retorna False si ocurrió un error durante el registro
+
+    def obtener_proximo_id(self):
+        # Generar un nuevo id de dos dígitos aleatorio que no esté en uso
+        while True:
+            new_id = random.randint(10, 99)  # Generar un nuevo id aleatorio de dos dígitos
+            if not self.docentes_collection.find_one({"id": new_id}):  # Verificar si el id ya está en uso
+                return new_id
     # METODO PARA REGISTRAR A UN OFICIAL DE POLICIA
