@@ -13,7 +13,7 @@ class SafeCheck:
     # METODO PARA INCIAR SESION COMO DIRECTOR
     def get_director_by_username(self, username):
         return self.directores_collection.find_one({"username": username})
-    # METODO PARA OBTENER LAS CARRERAS QUE TIENE ACARGO EL DIRECTOR
+    # METODO PARA OBTENER LAS ESPECIALIDADES DE LAS CARRERAS QUE TIENE ACARGO EL DIRECTOR
     def get_especialidades_by_carrera_id(self, carrera_id):
         carrera = self.carreras_collection.find_one({"carrera_id": carrera_id})
         if carrera:
@@ -62,3 +62,4 @@ class SafeCheck:
         except PyMongoError as e:
             print("Error al registrar docente:", e)
             return False  # Retorna False si ocurrió un error durante el registro
+    # METODO PARA REGISTRAR A UN OFICIAL DE POLICIA
