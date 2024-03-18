@@ -11,6 +11,7 @@ urls = (
     r'/visitas', 'mvc.controllers.visitas.Visitas',
     '/notifications', 'mvc.controllers.notifications.Notifications',
     r'/especialidades/(\d+)', 'mvc.controllers.especialidades.Especialidades',
+    r'/docentes/(\d+)', 'mvc.controllers.docentes.Docentes',
     r'/alumnos/(.*)', 'mvc.controllers.lista_alumnos.ListaAlumnos',
     r'/ver_alumno/(\d+)', 'mvc.controllers.ver_alumno.VerAlumno',
 )
