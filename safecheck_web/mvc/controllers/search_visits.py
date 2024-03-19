@@ -7,7 +7,7 @@ class SearchVisits:
     def GET(self):
         try:
             params = web.input()
-            fecha = params.get('fecha', '')  # Fecha de búsqueda
+            fecha = params.get('fecha_entrada', '')  # Fecha de búsqueda obtenida del formulario
 
             # Si no se proporciona ninguna fecha, mostrar todas las visitas
             if not fecha:
@@ -21,4 +21,4 @@ class SearchVisits:
             # Renderizar la vista con los resultados de la búsqueda
             return render.resultados_busqueda(resultados=visitas)
         except Exception as e:
-            return f"Error al buscar visitas: {str(e)}"
+            return render.error_search_visits(error=str(e))

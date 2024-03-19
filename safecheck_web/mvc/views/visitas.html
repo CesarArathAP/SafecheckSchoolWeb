@@ -36,15 +36,19 @@ $def with(visitas)
     </div>
 </div>
 
-<div class="container">
-    <form action="/resultado" class="mb-4">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Buscar visita..." aria-label="Buscar" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Buscar</button>
+<div class="container">     
+    <div class="container">
+        <form action="/visitas/resultado" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Ingresa la fecha (ejemplo: 16/03/2024)" aria-label="Buscar visita por fecha..." aria-describedby="basic-addon2" name="fecha_entrada" id="fecha_entrada">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="bi bi-calendar"></i> Buscar
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>        
+    </div>    
     <table class="table">
         <thead>
             <tr>

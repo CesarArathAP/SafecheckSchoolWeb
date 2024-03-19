@@ -62,14 +62,10 @@ class SafeCheck:
         
     def buscar_vistas_por_fecha(self, fecha):
         try:
-            # Convertir la fecha a objeto datetime
-            fecha = datetime.strptime(fecha, '%Y-%m-%d')
-
             # Consultar la base de datos para las visitas en la fecha especificada
             visitas = list(self.visitas_collection.find({
                 "visita.registro.fecha": fecha
             }))
-            
             return visitas
         except Exception as e:
             print("Error al buscar las visitas por fecha:", e)
