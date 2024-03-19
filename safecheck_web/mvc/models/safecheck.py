@@ -114,3 +114,7 @@ class SafeCheck:
             {"$match": {"carreras.id": carrera_id}},
             {"$project": {"_id": 1, "id": 1, "nombre": 1, "apellido_paterno": 1, "apellido_materno": 1, "telefono": 1, "nss": 1, "email": 1, "username": 1, "password_md5": 1}}
         ])
+    
+    # METODO PARA VER VISITA EN UNA VISTA
+    def get_visita_by_id(self, id):
+        return self.visitas_collection.find_one({'id': id})

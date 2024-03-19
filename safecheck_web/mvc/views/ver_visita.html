@@ -1,10 +1,10 @@
-$def with(visitas)
+$def with(visita)
 
 <div class="container-fluid bg-primary text-white p-3 mb-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h2 class="m-0">Visitas a la Universidad</h2>
+                <h2 class="m-0">Visitas a la Universidad > $visita['visita']['visitante']['nombre']</h2>
             </div>
             <div class="col-md-6 text-md-end">
                 <nav class="navbar navbar-expand-md navbar-dark">
@@ -37,29 +37,23 @@ $def with(visitas)
 </div>
 
 <div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Motivo de Visita</th>
-                <th>Área de Visita</th>
-                <th>Fotografía</th>
-                <th>Fecha</th>
-                <th>Hora de Entrada</th>
-                <th>Hora de Salida</th>
-            </tr>
-        </thead>
-        <tbody>
-            $for visita in visitas:
-            <tr>
-                <td><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/ver_visita/$visita['id']" width="100">$visita['visita']['visitante']['nombre']</a></td>
-                <td>$visita['visita']['motivo']['descripcion']</td>
-                <td>$visita['visita']['ubicacion']['area']</td>
-                <td><img src="$visita['visita']['fotografia']" class="img-fluid" style="max-width: 50px;"></td>
-                <td>$visita['visita']['registro']['fecha']</td>
-                <td>$visita['visita']['registro']['hora_entrada']</td>
-                <td>$visita['visita']['registro']['hora_salida']</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="$visita['visita']['fotografia']" class="img-fluid rounded-circle" style="width: 200px; height: 200px;" alt="Fotografía">
+                </div>
+                <div class="col-md-8">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Nombre:</strong> $visita['visita']['visitante']['nombre']</li>
+                        <li class="list-group-item"><strong>Motivo de Visita:</strong> $visita['visita']['motivo']['descripcion']</li>
+                        <li class="list-group-item"><strong>Área de Visita:</strong> $visita['visita']['ubicacion']['area']</li>
+                        <li class="list-group-item"><strong>Fecha:</strong> $visita['visita']['registro']['fecha']</li>
+                        <li class="list-group-item"><strong>Hora de Entrada:</strong> $visita['visita']['registro']['hora_entrada']</li>
+                        <li class="list-group-item"><strong>Hora de Salida:</strong> $visita['visita']['registro']['hora_salida']</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
