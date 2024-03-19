@@ -25,7 +25,7 @@ class DocenteRegistration:
         # Lista predefinida de carreras con sus IDs
         carreras_disponibles = {
             "Diseño Digital": 1,
-            "Energias Renovables": 2,
+            "Energías Renovables": 2,
             "Industrial": 3,
             "Mecatrónica": 4,
             "Nanotecnología": 5,

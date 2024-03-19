@@ -52,7 +52,7 @@ $def with(visitas)
         <tbody>
             $for visita in visitas:
             <tr>
-                <td>$visita['visita']['visitante']['nombre']</td>
+                <td><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">$visita['visita']['visitante']['nombre']</a></td>
                 <td>$visita['visita']['motivo']['descripcion']</td>
                 <td>$visita['visita']['ubicacion']['area']</td>
                 <td><img src="$visita['visita']['fotografia']"></td>

@@ -106,8 +106,7 @@ class SafeCheck:
         except PyMongoError as e:
             print("Error al registrar policía:", e)
             return False  # Retorna False si ocurrió un error durante el registro
-    
-    # METODO PARA OBTENER A LOS DOCNETES POR CARRERA
+
     # METODO PARA OBTENER A LOS DOCNETES POR CARRERA
     def obtener_docentes_por_carrera(self, carrera_id):
         # Filtrar los docentes que tienen el carrera_id proporcionado
