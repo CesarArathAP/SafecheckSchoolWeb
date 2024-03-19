@@ -1,3 +1,4 @@
+import datetime
 import random
 from bson import ObjectId
 from pymongo import MongoClient
@@ -56,6 +57,24 @@ class SafeCheck:
         except Exception as e:
             print("Error al obtener las visitas:", e)
             return []
+        
+    # BUSCAR VISTAS POR FECHA
+        
+    def buscar_vistas_por_fecha(self, fecha):
+        try:
+            # Convertir la fecha a objeto datetime
+            fecha = datetime.strptime(fecha, '%Y-%m-%d')
+
+            # Consultar la base de datos para las visitas en la fecha especificada
+            visitas = list(self.visitas_collection.find({
+                "visita.registro.fecha": fecha
+            }))
+            
+            return visitas
+        except Exception as e:
+            print("Error al buscar las visitas por fecha:", e)
+            return []
+
     # METODO PARA REGISTRAR A UN DOCENTE NUEVO Y ASIGNAR UNA O VARIAS CARRERAS
         
     def registrar_docente(self, nombre, apellido_paterno, apellido_materno, telefono, nss, correo, username, password_md5, carreras):
