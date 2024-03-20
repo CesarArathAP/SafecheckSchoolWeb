@@ -9,6 +9,8 @@ class SafeCheck:
         self.visitas_collection = self.db['visitas']
         self.docentes_collection = self.db['docentes']
         self.policias_collection = self.db['policias']
+        self.reportes_collection = self.db['reportes']
+
 
     def get_director_by_username(self, username):
         return self.directores_collection.find_one({"username": username})
@@ -82,3 +84,18 @@ class SafeCheck:
             print("Error al registrar policía:", e)
         return False  # Retorna False si ocurrió un error durante el registro
 
+    def obtener_visitas(self):
+        try:
+            visitas = list(self.visitas_collection.find())
+            return visitas
+        except Exception as e:
+            print("Error al obtener las visitas:", e)
+        return[]
+    
+    def obtener_reportes(self):
+        try:
+            reportes = list(self.reportes_collection.find())
+            return reportes
+        except Exception as e:
+            print("Error al obtener los reportes:", e)
+        return []
