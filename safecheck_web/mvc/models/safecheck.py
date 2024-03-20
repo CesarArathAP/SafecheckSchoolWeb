@@ -16,6 +16,7 @@ class SafeCheck:
         self.visitas_collection = self.db['visitas']
         self.docentes_collection = self.db['docentes']
         self.vigilancia_collection = self.db['vigilancia']
+        self.reportes_collection = self.db['reportes']
 
     # METODO PARA INCIAR SESION COMO DIRECTOR
     def get_director_by_username(self, username):
@@ -133,3 +134,19 @@ class SafeCheck:
     # METODO PARA VER VISITA EN UNA VISTA
     def get_visita_by_id(self, id):
         return self.visitas_collection.find_one({'id': id})
+
+    def obtener_visitas(self):
+        try:
+            visitas = list(self.visitas_collection.find())
+            return visitas
+        except Exception as e:
+            print("Error al obtener las visitas:", e)
+        return[]
+    
+    def obtener_reportes(self):
+        try:
+            reportes = list(self.reportes_collection.find())
+            return reportes
+        except Exception as e:
+            print("Error al obtener los reportes:", e)
+        return []
