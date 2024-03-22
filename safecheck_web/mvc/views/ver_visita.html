@@ -1,10 +1,10 @@
-$def with(director)
+$def with(visita)
 
 <div class="container-fluid bg-primary text-white p-3 mb-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h2 class="m-0"><img src="/static/images/icons/director.png" style="max-width: 50px;">¡Bienvenido Director(a) $director['nombre']!</h2>
+                <h2 class="m-0">Visitas a la Universidad > $visita['visita']['visitante']['nombre']</h2>
             </div>
             <div class="col-md-6 text-md-end">
                 <nav class="navbar navbar-expand-md navbar-dark">
@@ -36,18 +36,22 @@ $def with(director)
     </div>
 </div>
 
-<div class="container mt-5">
-    <div class="row">
-        $for carrera in director['carreras']
-            <div class="col-md-6">
-                <div class="card bg-light mb-3">
-                    <div class="card-body d-flex justify-content-between align-items-center">
-                        <h5 class="card-title text-primary">$carrera['nombre']</h5>
-                        <div>
-                            <a href="/especialidades/$carrera['id']" class="btn btn-primary mr-2">Ver Especialidad</a>
-                            <a href="/docentes/$carrera['id']" class="btn btn-secondary">Ver Docentes</a>
-                        </div>
-                    </div>
+<div class="container">
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="$visita['visita']['fotografia']" class="img-fluid rounded-circle" style="width: 200px; height: 200px;" alt="Fotografía">
+                </div>
+                <div class="col-md-8">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Nombre:</strong> $visita['visita']['visitante']['nombre']</li>
+                        <li class="list-group-item"><strong>Motivo de Visita:</strong> $visita['visita']['motivo']['descripcion']</li>
+                        <li class="list-group-item"><strong>Área de Visita:</strong> $visita['visita']['ubicacion']['area']</li>
+                        <li class="list-group-item"><strong>Fecha:</strong> $visita['visita']['registro']['fecha']</li>
+                        <li class="list-group-item"><strong>Hora de Entrada:</strong> $visita['visita']['registro']['hora_entrada']</li>
+                        <li class="list-group-item"><strong>Hora de Salida:</strong> $visita['visita']['registro']['hora_salida']</li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ model = SafeCheck()
 class VigilanciaRegistration:
     def GET(self):
         return render.vigilancia_registration()
-
+    
     def POST(self):
         form = web.input()
         nombre = form.nombre
@@ -16,10 +16,10 @@ class VigilanciaRegistration:
         username = form.username
         password = form.password
 
-        # Intenta registrar al personal de vigilancia en la base de datos
+       
+    # Insertar el policía en la colección de vigilancia
         if model.registrar_policia(nombre, apellidos, telefono, username, password):
-            # Si el registro fue exitoso, redirige a alguna página de éxito
-            raise web.seeother('/new')  # Cambia '/exito' por la URL que desees
+                raise web.seeother('/new')  # Redirigir a una página de éxito
         else:
-            # Si ocurrió un error, muestra un mensaje de error o redirige a alguna página de error
-            raise web.seeother('/error')  # Cambia '/error' por la URL que desees
+            print("Error al registrar policía:")
+            raise web.seeother('/error')  # Redirigir a una página de error

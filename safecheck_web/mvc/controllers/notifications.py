@@ -8,3 +8,4 @@ class Notifications:
         model = SafeCheck()
         reportes = model.obtener_reportes()  # Obtener los datos de las visitas desde el modelo
         return render.notifications(reportes=reportes)  # Pasar los datos de las visitas a la plantilla
+    

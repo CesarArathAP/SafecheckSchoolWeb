@@ -11,22 +11,37 @@ class DocenteRegistration:
     def POST(self):
         form = web.input()
         nombre = form.nombre
-        apellido1 = form.apellido1
-        apellido2 = form.apellido2
-        correo = form.correo
-        contrasena = form.contrasena
-        num_trabajador = form.num_trabajador
-        carreras = []  # Inicializar lista de carreras
-
-        # Obtener las carreras seleccionadas
-        for key, value in form.items():
-            if key.startswith('carrera_'):
-                carreras.append(value)
-
-        # Intenta registrar al docente en la base de datos
-        if model.registrar_docente(nombre, apellido1, apellido2, correo, contrasena, num_trabajador, carreras):
-            # Si el registro fue exitoso, redirige a alguna página de éxito
-            raise web.seeother('/new')  # Cambia '/exito' por la URL que desees
+        apellido_paterno = form.apellido_paterno
+        apellido_materno = form.apellido_materno
+        telefono = form.telefono
+        nss = form.nss
+        email = form.email
+        username = form.username
+        password_md5 = form.password_md5
+        
+        # Obtener carreras seleccionadas
+        carreras_seleccionadas = [carrera.strip() for carrera in form.get('carrera', '').split('\r\n') if carrera.strip()]
+        
+        # Lista predefinida de carreras con sus IDs
+        carreras_disponibles = {
+            "Diseño Digital": 1,
+            "Energías Renovables": 2,
+            "Industrial": 3,
+            "Mecatrónica": 4,
+            "Nanotecnología": 5,
+            "TIC": 6,
+            "Criminalística": 7,
+            "Contaduría": 8,
+            "Desarrollo de Negocios": 9,
+            "Terapia Física": 10,
+            "Lic. Enfermería": 11,
+            "Lic. Salud Reproductiva": 12
+        }
+        
+        # Obtener los IDs de las carreras seleccionadas
+        carreras_objects = [{"id": carreras_disponibles[carrera], "nombre": carrera} for carrera in carreras_seleccionadas]
+       
+        if model.registrar_docente(nombre, apellido_paterno, apellido_materno, telefono, nss, email, username, password_md5, carreras_objects):
+            raise web.seeother('/new')  
         else:
-            # Si ocurrió un error, muestra un mensaje de error o redirige a alguna página de error
-            raise web.seeother('/error')  # Cambia '/error' por la URL que desees
+            raise web.seeother('/error')
