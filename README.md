@@ -4,11 +4,15 @@ pip install fpdf
 
 
 aseguremonos de tener la base de datos
-nombre|safecheckshool
+
+
+|nombre|
+|-------------|
+|safecheckshool|
 
 
 
-| Columna 1   | Columna 2  | Columna 3 | Columna 4  | Columna 5  | Columna 6  |
+| Collections  | Collections  | Collections | Collections  | Collections  | Collections  |
 |-------------|-------------|------------|------------|------------|------------|
 | carreras   | directores | docentes  | reportes  | vigilancia | visitas    |
 
