@@ -43,9 +43,8 @@ $def with(reportes)
             <button class="btn btn-primary" type="button" onclick="buscar()">Buscar</button>
         </div>
     </form>
-
-
-
+    
+    
 <div class="container">
     <table class="table">
         <thead>
@@ -71,35 +70,35 @@ $def with(reportes)
         </tbody>
     </table>
     <script>
-        function buscar() {
-            var input = document.getElementById('busqueda');
-            var filtro = input.value.toUpperCase();
-            var tabla = document.querySelector('table');
-            var filas = tabla.getElementsByTagName('tr');
-    
-            for (var i = 0; i < filas.length; i++) {
-                var celdas = filas[i].getElementsByTagName('td');
-                var mostrarFila = false;
-    
-                for (var j = 0; j < celdas.length; j++) {
-                    var celda = celdas[j];
-    
-                    if (celda) {
-                        var textoCelda = celda.textContent || celda.innerText;
-    
-                        if (textoCelda.toUpperCase().indexOf(filtro) > -1) {
-                            mostrarFila = true;
-                            break;
-                        }
+    function buscar() {
+        var input = document.getElementById('busqueda');
+        var filtro = input.value.toUpperCase();
+        var tabla = document.querySelector('table');
+        var filas = tabla.getElementsByTagName('tr');
+
+        for (var i = 0; i < filas.length; i++) {
+            var celdas = filas[i].getElementsByTagName('td');
+            var mostrarFila = false;
+
+            for (var j = 0; j < celdas.length; j++) {
+                var celda = celdas[j];
+
+                if (celda) {
+                    var textoCelda = celda.textContent || celda.innerText;
+
+                    if (textoCelda.toUpperCase().indexOf(filtro) > -1) {
+                        mostrarFila = true;
+                        break;
                     }
                 }
-    
-                if (mostrarFila) {
-                    filas[i].style.display = '';
-                } else {
-                    filas[i].style.display = 'none';
-                }
+            }
+
+            if (mostrarFila) {
+                filas[i].style.display = '';
+            } else {
+                filas[i].style.display = 'none';
             }
         }
-    </script>
+    }
+</script>
 </div>
