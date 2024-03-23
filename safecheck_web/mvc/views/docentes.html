@@ -49,14 +49,13 @@ $def with(docentes)
                     <div class="card-body">
                         <p class="card-text">Correo Electrónico: $docente['email']</p>
                         <p class="card-text">Teléfono: $docente['telefono']</p>
-                        <td><a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/ver_docente/$docente['id']" width="100">$docente['nombre']</a></td>
+                        <p class="card-text">Nombre: $docente['nombre']</p>
 
                     </div>
                     <div class="card-footer">
                         <a href="/ver_docente/$docente['id']" class="btn btn-primary">ver_docente</a>
-                        <a href="/editar_docente/{{ docente['id'] }}" class="btn btn-primary">Editar</a>
-                        <form action="/borrar/$docente['_id']" method="POST" onsubmit="return confirm('¿Estás seguro de borrar este docente?')">
-                            <button type="submit" class="btn btn-danger">Borrar</button>
+                        <a href="/editar_docente/$docente['id']" class="btn btn-primary">Editar</a>
+                        <a href="/borrar_docente/$docente['id']" class="btn btn-primary">Borrar</a>
                         </form>
                     </div>
                 </div>

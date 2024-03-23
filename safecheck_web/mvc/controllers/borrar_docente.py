@@ -1,18 +1,16 @@
 import web
 from mvc.models.safecheck import SafeCheck
 
+render = web.template.render('mvc/views/', base="layout")
+model = SafeCheck()
+
 class BorrarDocente:
-    def __init__(self, render):
-        self.render = render
-        self.model = SafeCheck()
 
-    def GET(self, docente_id):
-        try:
-            # Eliminar el docente de la base de datos
-            if self.model.eliminar_docente(docente_id):
-                return web.seeother('/index')  # Redirige a la página de lista de docentes
-            else:
-                return self.render.error("Error al eliminar el docente.")
-        except Exception as e:
-            return self.render.error(str(e))
+    def GET(self, id):
+        docente = model.get_docente_by_id(int(id))
+        return render.borrar_docente(docente=docente)
 
+    def POST(self, id):
+        model.delete_docente(int(id))
+        # Redirigir a la página de docentes después de borrar
+        raise web.seeother('/new')  # Redirige a la página de docentes después de borrar

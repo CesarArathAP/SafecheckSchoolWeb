@@ -21,7 +21,7 @@ urls = (
     '/visitas/resultado', 'mvc.controllers.search_visits.SearchVisits',
     r'/editar_docente/(\d+)', 'mvc.controllers.edit_docente.EditarDocente',
     r'/actualizar_docente/(\d+)', 'mvc.controllers.edit_docente.ActualizarDocente',
-    r'/borrar/(\w+)', 'mvc.controllers.borrar_docente.BorrarDocente'
+    r'/borrar_docente/(\d+)', 'mvc.controllers.borrar_docente.BorrarDocente'
 )
 
 app = web.application(urls, globals())
