@@ -70,10 +70,16 @@ $def with(alumno)
                         <div class="col-md-8" id="estado">${alumno['estado']}</div>
                     </div>
                     <hr>
+
                     <div class="row">
                         <form action="${alumno['matricula']}" method="post">
+                            <div class="form-group mb-3">
+                                <label for="motivo">Motivo del Reporte:</label>
+                                <textarea class="form-control" id="motivo" name="motivo" rows="3" required></textarea>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-sm" id="generarReporteBtn">Generar Reporte</button>
                         </form>                        
+                    </div>                      
                     </div>
                 </div>
             </div>

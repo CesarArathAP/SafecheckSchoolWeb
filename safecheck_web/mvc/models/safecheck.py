@@ -192,7 +192,11 @@ class SafeCheck:
      return self.docentes_collection.find_one({'id': id})
 
 
+
+#metodo para actualizar los datos de un docente.
     from pymongo.errors import PyMongoError
+
+
 
     def update_docente(self, id, nombre, apellido_paterno, apellido_materno, telefono, nss, correo, username, password_md5, carreras):
         try:
