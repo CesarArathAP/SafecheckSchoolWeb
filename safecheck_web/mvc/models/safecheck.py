@@ -251,3 +251,12 @@ class SafeCheck:
         except PyMongoError as e:
             print("Error al eliminar docente:", e)
             return False  # Retorna False si ocurrió algún error durante la eliminación
+    
+#metodo para obtener coordinadores
+    def obtener_coordinadores(self):
+        try:
+            coordinadores = list(self.directores_collection.find())
+            return coordinadores
+        except PyMongoError as e:
+            print("Error al obtener los coordinadores:", e)
+            return []
