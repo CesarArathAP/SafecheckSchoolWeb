@@ -1,0 +1,14 @@
+# Entornos virtuales
+venv/
+
+# Archivos de caché
+__pycache__/
+
+# Archivos de configuración local
+config.ini
+
+# Directorio de dependencias
+lib/
+
+# Archivos de registro
+*.log

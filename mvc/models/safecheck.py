@@ -187,22 +187,116 @@ class SafeCheck:
             print("Error al obtener los reportes:", e)
         return []
     
-
-    def eliminar_docente(self, docente_id):
-        try:
-        # Convertir el ID de string a ObjectId
-            docente_id = ObjectId(docente_id)
-        
-        # Buscar y eliminar el docente de la colección
-            result = self.docentes_collection.delete_one({"_id": docente_id})
-        
-            if result.deleted_count == 1:
-                return True  # Retorna True si se eliminó correctamente
-            else:
-                return False  # Retorna False si no se encontró el docente para eliminar
-        except Exception as e:
-            print("Error al eliminar docente:", e)
-            return False  # Retorna False si ocurrió algún error durante la eliminación
-        
+        #METODO PARA BORRAR A UN DOCENTE    
     def get_docente_by_id(self, id):
      return self.docentes_collection.find_one({'id': id})
+
+
+
+#metodo para actualizar los datos de un docente.
+    from pymongo.errors import PyMongoError
+
+
+
+    def update_docente(self, id, nombre, apellido_paterno, apellido_materno, telefono, nss, correo, username, password_md5, carreras):
+        try:
+        # Convertir el ID a entero (asumiendo que id es una cadena)
+            id_docente = int(id)
+
+        # Buscar el docente por su ID y actualizar sus datos
+            result = self.docentes_collection.update_one(
+                {"id": id_docente},  # Filtro por el ID del docente
+                {"$set": {
+                    "nombre": nombre,
+                    "apellido_paterno": apellido_paterno,
+                    "apellido_materno": apellido_materno,
+                    "telefono": telefono,
+                    "nss": nss,
+                    "email": correo,
+                    "username": username,
+                    "password_md5": password_md5,
+                    "carreras": carreras
+            }}
+        )
+        
+        # Verificar si se actualizó correctamente
+            if result.modified_count == 1:
+                return True  # Retorna True si la actualización fue exitosa
+            else:
+                return False  # Retorna False si no se encontró el docente para actualizar
+        except ValueError:
+            print("ID de docente no válido:", id)
+            return False
+        except PyMongoError as e:
+            print("Error al actualizar docente:", e)
+            return False  # Retorna False si ocurrió algún error durante la actualización
+
+
+    def delete_docente(self, id):
+        try:
+            # Convertir el ID a entero (asumiendo que id es una cadena)
+            id_docente = int(id)
+
+            # Eliminar al docente por su ID
+            result = self.docentes_collection.delete_one({"id": id_docente})
+
+            # Verificar si se eliminó correctamente
+            if result.deleted_count == 1:
+                return True  # Retorna True si la eliminación fue exitosa
+            else:
+                return False  # Retorna False si no se encontró el docente para eliminar
+        except ValueError:
+            print("ID de docente no válido:", id)
+            return False
+        except PyMongoError as e:
+            print("Error al eliminar docente:", e)
+            return False  # Retorna False si ocurrió algún error durante la eliminación
+    
+#metodo para obtener coordinadores
+    def obtener_coordinadores(self):
+        try:
+            coordinadores = list(self.directores_collection.find())
+            return coordinadores
+        except PyMongoError as e:
+            print("Error al obtener los coordinadores:", e)
+            return []
+
+#metodo para obtener a un coordinador por su id
+    def get_coordinador_by_id(self, id):
+        return self.directores_collection
+    
+#metodo para actualizar los datos de un coordinador
+
+    def edit_coordinador(self, id, nombre, apellido_paterno, apellido_materno, telefono, nss, email, username, password_md5, carreras):
+        try:
+            # Convertir el ID a entero (asumiendo que id es una cadena)
+            id_coordinador = int(id)
+
+            # Buscar el coordinador por su ID y actualizar sus datos
+            result = self.directores_collection.update_one(
+                {"id": id_coordinador},  # Filtro por el ID del coordinador
+                {"$set": {
+                    "nombre": nombre,
+                    "apellido_paterno": apellido_paterno,
+                    "apellido_materno": apellido_materno,
+                    "telefono": telefono,
+                    "nss": nss,
+                    "email": email,
+                    "username": username,
+                    "password_md5": password_md5,
+                    "carreras": carreras
+                }}
+            )
+
+            # Verificar si se actualizó correctamente
+            if result.modified_count == 1:
+                return True  # Retorna True si la actualización fue exitosa
+            else:
+                return False  # Retorna False si no se encontró el coordinador para actualizar
+        except ValueError:
+            print("ID de coordinador no válido:", id)
+            return False
+        except PyMongoError as e:
+            print("Error al actualizar coordinador:", e)
+            return False
+        
