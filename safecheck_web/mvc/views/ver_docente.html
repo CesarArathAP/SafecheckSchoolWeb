@@ -17,6 +17,9 @@ $def with(docente)
                                 <a class="nav-link" href="/index">Inicio</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/coordinadores">Coordinadores</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/docentes">Docentes</a>
                             </li>
                             <li class="nav-item">
@@ -27,7 +30,6 @@ $def with(docente)
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Salir</a>
-                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -40,9 +42,6 @@ $def with(docente)
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-4 text-center">
-                    <img src="/imagen_docente/$docente['_id']" class="img-fluid rounded-circle" style="width: 200px; height: 200px;" alt="Fotografía">
-                </div>
                 <div class="col-md-8">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>Nombre:</strong> $docente['nombre']</li>
@@ -52,7 +51,6 @@ $def with(docente)
                         <li class="list-group-item"><strong>NSS:</strong> $docente['nss']</li>
                         <li class="list-group-item"><strong>Correo Electrónico:</strong> $docente['email']</li>
                         <li class="list-group-item"><strong>Nombre de Usuario:</strong> $docente['username']</li>
-                        <li class="list-group-item"><strong>Contraseña MD5:</strong> $docente['password_md5']</li>
                         <li class="list-group-item"><strong>Carreras:</strong></li>
                         <li class="list-group-item">
                             <ul>

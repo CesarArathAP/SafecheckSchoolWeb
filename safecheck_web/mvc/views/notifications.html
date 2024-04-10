@@ -17,7 +17,10 @@ $def with(reportes)
                                 <a class="nav-link" href="/index">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/visitas">Visitas a la Universidad</a>
+                                <a class="nav-link" href="/coordinadores">Coordinadores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docentes">Docentes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/new">Nuevo Registro</a>
@@ -44,32 +47,37 @@ $def with(reportes)
         </div>
     </form>
     
-    
-<div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>MATRICULA</th>
-                <th>NOMBRE</th>
-                <th>GRUPO</th>
-                <th>Fecha de la Prueba</th>
-                <th>Hora de la Prueba</th>
-                <th>Nivel de Intoxicacion </th>
-            </tr>
-        </thead>
-        <tbody>
-            $for reportes in reportes:
-            <tr>
-                <td>$reportes['matricula']</td>
-                <td>$reportes['nombre']</td>
-                <td>$reportes['grupo']</td>
-                <td>$reportes['fecha_prueba']</td>
-                <td>$reportes['hora_prueba']</td>
-                <td>$reportes['grados']</td>
-            </tr>
-        </tbody>
-    </table>
-    <script>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>MATRICULA</th>
+                    <th>NOMBRE</th>
+                    <th>GRUPO</th>
+                    <th>Fecha de la Prueba</th>
+                    <th>Hora de la Prueba</th>
+                    <th>Nivel de Intoxicacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                $for reporte in reportes:
+                <tr>
+                    <td>$reporte['alumno']['matricula']</td>
+                    $if 'nombre' in reporte['alumno']:
+                        <td>$reporte['alumno']['nombre']</td>
+                    $else:
+                        <td>No disponible</td>
+                    <td>$reporte['alumno']['grupo']</td>
+                    <td>$reporte['fecha']</td>
+                    <td>$reporte['hora']</td>
+                    <td>$reporte['resultado']</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
     function buscar() {
         var input = document.getElementById('busqueda');
         var filtro = input.value.toUpperCase();
@@ -101,4 +109,3 @@ $def with(reportes)
         }
     }
 </script>
-</div>

@@ -1,10 +1,10 @@
-$def with(docente)
+$def with(coordinador)
 
 <div class="container-fluid bg-primary text-white p-3 mb-4">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h2 class="m-0">Borrar Docente: $docente['nombre']</h2>
+                <h2 class="m-0">Borrar Coordinador: $coordinador['nombre']</h2>
             </div>
             <div class="col-md-6 text-md-end">
                 <nav class="navbar navbar-expand-md navbar-dark">
@@ -45,26 +45,28 @@ $def with(docente)
             <div class="row">
                 <div class="col-md-8">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Nombre:</strong> $docente['nombre']</li>
-                        <li class="list-group-item"><strong>Apellido Paterno:</strong> $docente['apellido_paterno']</li>
-                        <li class="list-group-item"><strong>Apellido Materno:</strong> $docente['apellido_materno']</li>
-                        <li class="list-group-item"><strong>Teléfono:</strong> $docente['telefono']</li>
-                        <li class="list-group-item"><strong>NSS:</strong> $docente['nss']</li>
-                        <li class="list-group-item"><strong>Correo Electrónico:</strong> $docente['email']</li>
-                        <li class="list-group-item"><strong>Nombre de Usuario:</strong> $docente['username']</li>
+                        <li class="list-group-item"><strong>Nombre:</strong> $coordinador['nombre']</li>
+                        <li class="list-group-item"><strong>Apellido Paterno:</strong> $coordinador['apellido_paterno']</li>
+                        <li class="list-group-item"><strong>Apellido Materno:</strong> $coordinador['apellido_materno']</li>
+                        <li class="list-group-item"><strong>Teléfono:</strong> $coordinador['telefono']</li>
+                        <li class="list-group-item"><strong>NSS:</strong> $coordinador['nss']</li>
+                        <li class="list-group-item"><strong>Correo Electrónico:</strong> $coordinador['email']</li>
+                        <li class="list-group-item"><strong>Nombre de Usuario:</strong> $coordinador['username']</li>
                         <li class="list-group-item"><strong>Carreras:</strong></li>
                         <li class="list-group-item">
                             <ul>
-                                $for carrera in docente['carreras']:
+                                $for carrera in coordinador['carreras']:
                                     <li>$carrera['nombre']</li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <form action="/borrar_docente/$docente['id']" method="post">
-                    <input type="submit" value="Borrar Docente">
+                <form action="/borrar_coordinador/$coordinador['username']" method="post">
+                    <input type="submit" class="btn btn-primary" value="Borrar Coordinador">
                 </form>
-                
+                <div class="card-footer">
+                    <a href="/coordinadores" class="btn btn-primary">Regresar</a>
+                </div>
             </div>
         </div>
     </div>

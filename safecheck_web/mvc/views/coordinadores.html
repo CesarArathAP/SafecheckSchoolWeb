@@ -17,7 +17,10 @@ $def with(coordinadores)
                                 <a class="nav-link" href="/index">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/visitas">Visitas a la Universidad</a>
+                                <a class="nav-link" href="/coordinadores">Coordinadores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docentes">Docentes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/new">Nuevo Registro</a>
@@ -26,8 +29,7 @@ $def with(coordinadores)
                                 <a class="nav-link" href="/notifications">Notificaciones</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/logout">Salir</a>
-                            </li>
+                                <a class="nav-link" href="/">Salir</a>
                         </ul>
                     </div>
                 </nav>
@@ -51,9 +53,9 @@ $def with(coordinadores)
                         <p class="card-text">Nombre: $coordinador['nombre']</p>
                         </div>
                         <div class="card-footer">
-                            <a href="/ver_coordinador/" class="btn btn-primary">Ver Coordinador</a>
-                            <a href="/editar_coordinador/" class="btn btn-primary">Editar</a>
-                            <a href="/borrar_coordinador/]" class="btn btn-primary">Borrar</a>
+                            <a href="/ver_coordinador/$coordinador['username']" class="btn btn-primary">Ver</a>
+                            <a href="/editar_coordinador/$coordinador['username']" class="btn btn-primary">Editar</a>
+                            <a href="/borrar_coordinador/$coordinador['username']" class="btn btn-primary">Borrar</a>
                         </div>
                     </div>
                 </div>

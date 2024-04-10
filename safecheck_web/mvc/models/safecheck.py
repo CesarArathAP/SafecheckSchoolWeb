@@ -198,7 +198,7 @@ class SafeCheck:
 
 
 
-    def update_docente(self, id, nombre, apellido_paterno, apellido_materno, telefono, nss, correo, username, password_md5, carreras):
+    def update_docente(self, id, nombre, apellido_paterno, apellido_materno, telefono, nss, correo, username, carreras):
         try:
         # Convertir el ID a entero (asumiendo que id es una cadena)
             id_docente = int(id)
@@ -214,7 +214,6 @@ class SafeCheck:
                     "nss": nss,
                     "email": correo,
                     "username": username,
-                    "password_md5": password_md5,
                     "carreras": carreras
             }}
         )
@@ -251,6 +250,7 @@ class SafeCheck:
         except PyMongoError as e:
             print("Error al eliminar docente:", e)
             return False  # Retorna False si ocurrió algún error durante la eliminación
+
     
 #metodo para obtener coordinadores
     def obtener_coordinadores(self):
@@ -260,3 +260,69 @@ class SafeCheck:
         except PyMongoError as e:
             print("Error al obtener los coordinadores:", e)
             return []
+
+
+
+    def get_coordinador_by_username(self, username):
+        return self.directores_collection.find_one({'username': username})
+
+    def update_coordinador(self, username, nombre, apellido_paterno, apellido_materno, telefono, nss, correo, carreras):
+        try:
+            result = self.directores_collection.update_one(
+                {"username": username},
+                {"$set": {
+                    "nombre": nombre,
+                    "apellido_paterno": apellido_paterno,
+                    "apellido_materno": apellido_materno,
+                    "telefono": telefono,
+                    "nss": nss,
+                    "email": correo,
+                    "carreras": carreras
+                }}
+            )
+
+            if result.modified_count == 1:
+                return True
+            else:
+                return False
+        except PyMongoError as e:
+            print("Error al actualizar coordinador:", e)
+            return False
+
+    def delete_coordinador(self, username):
+        try:
+            result = self.directores_collection.delete_one({"username": username})
+            if result.deleted_count == 1:
+                return True
+            else:
+                return False
+        except PyMongoError as e:
+            print("Error al eliminar coordinador:", e)
+            return False
+
+    def obtener_coordinadores(self):
+        try:
+            return list(self.directores_collection.find())
+        except PyMongoError as e:
+            print("Error al obtener los coordinadores:", e)
+            return []
+
+    def registrar_coordinador(self, username, email, password_md5, nss, numero_trabajador, telefono, nombre, apellido_paterno, apellido_materno, carreras):
+        coordinador_data = {
+            "username": username,
+            "email": email,
+            "password_md5": password_md5,
+            "nss": nss,
+            "numero_trabajador": numero_trabajador,
+            "telefono": telefono,
+            "nombre": nombre,
+            "apellido_paterno": apellido_paterno,
+            "apellido_materno": apellido_materno,
+            "carreras": carreras
+        }
+        try:
+            self.directores_collection.insert_one(coordinador_data)
+            return True
+        except PyMongoError as e:
+            print("Error al registrar coordinador:", e)
+            return False
