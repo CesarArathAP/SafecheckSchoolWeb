@@ -62,7 +62,7 @@ class EditarDocente:
             # Registrar al docente con las carreras seleccionadas o previas
             if model.update_docente(int(id), nombre, apellido_paterno, apellido_materno, telefono, nss, email, username, carreras_objects):
                 # Redirigir al usuario a la página '/new' después de una actualización exitosa
-                raise web.seeother('/new')  
+                raise web.seeother('/docentes')  
             else:
                 # Redirigir al usuario a la página '/error' si ocurre algún error durante la actualización
                 raise web.seeother('/error')  

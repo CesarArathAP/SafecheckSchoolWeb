@@ -1,0 +1,73 @@
+$def with(policia)
+
+<div class="p-3 mb-2 bg-success text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="m-0">Eliminar Policía</h2>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <nav class="navbar navbar-expand-md navbar-dark">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/index">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/registros">Personal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/visitas">Visitas Externas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/new">Nuevo Registro</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/notifications">Reportes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Salir</a>
+                            </li> 
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+            <p>Por favor, confirme que desea eliminar al siguiente policía:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Nombre:</strong> $policia['nombre']</li>
+                <li class="list-group-item"><strong>Apellidos:</strong> $policia['apellidos']</li>
+                <li class="list-group-item"><strong>Teléfono:</strong> $policia['telefono']</li>
+                <li class="list-group-item"><strong>Nombre de Usuario:</strong> $policia['username']</li>
+            </ul>
+            <form action="/borrar_policia/$policia['username']" method="post">
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                              </svg>  <!-- Icono de borrar -->
+                </button>
+            </form>
+            
+
+            <div>
+            <a href="/policias" class="btn btn-primary">
+                <i class="bi bi-arrow-return-left"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+                </svg> 
+            </a>
+        </div>
+        </div>
+    </div>
+</div>

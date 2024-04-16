@@ -1,10 +1,10 @@
-$def with(director)
+$def with(administrador)
 
-<div class="container-fluid bg-primary text-white p-3 mb-4">
+<div class="p-3 mb-2 bg-success text-white">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h2 class="m-0"><img src="/static/images/icons/director.png" style="max-width: 50px;">¡Bienvenido Director(a) $director['nombre']!</h2>
+                <h2 class="m-0"><img src="/static/images/icons/director.png" style="max-width: 50px;">¡Bienvenido Admin(a) $administrador['nombre']!</h2>
             </div>
             <div class="col-md-6 text-md-end">
                 <nav class="navbar navbar-expand-md navbar-dark">
@@ -17,20 +17,20 @@ $def with(director)
                                 <a class="nav-link" href="/index">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/coordinadores">Coordinadores</a>
+                                <a class="nav-link" href="/registros">Personal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/visitas">Visitas a la Universidad</a>
+                                <a class="nav-link" href="/visitas">Visitas Externas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/new">Nuevo Registro</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/notifications">Notificaciones</a>
+                                <a class="nav-link" href="/notifications">Reportes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Salir</a>
-                            </li>
+                            </li> 
                         </ul>
                     </div>
                 </nav>
@@ -41,7 +41,7 @@ $def with(director)
 
 <div class="container mt-5">
     <div class="row">
-        $for carrera in director['carreras']
+        $for carrera in administrador['carreras']:
             <div class="col-md-6">
                 <div class="card bg-light mb-3">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -53,6 +53,5 @@ $def with(director)
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>

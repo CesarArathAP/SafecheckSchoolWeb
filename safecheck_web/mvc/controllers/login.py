@@ -13,11 +13,14 @@ class Login:
         password = form.password
 
         model = SafeCheck()
-        director = model.get_director_by_username(username)
+        user, user_type = model.login(username, password)
 
-        if director and director['password_md5'] == password:
-            # Director encontrado y contraseña correcta, redirigir al usuario a la vista index
-            return render.index(director=director)  # Pasar el director como un parámetro nombrado
+        if user_type == "admin":
+            # Si el usuario es un administrador, redirigir al usuario a la vista de administrador
+            return render.index(administrador=user)  # Pasar el administrador como un parámetro
+        elif user_type == "director":
+            # Si el usuario es un director, redirigir al usuario a la vista de director
+            return render.index(director=user)  # Pasar el director como un parámetro
         else:
-            # Director no encontrado o contraseña incorrecta, mostrar mensaje de error
+            # Si no se encontró el usuario o la contraseña es incorrecta, mostrar mensaje de error
             return render.password_incorrect()

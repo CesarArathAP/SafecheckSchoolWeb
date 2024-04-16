@@ -13,4 +13,4 @@ class BorrarDocente:
     def POST(self, id):
         model.delete_docente(int(id))
         # Redirigir a la página de docentes después de borrar
-        raise web.seeother('/new')  # Redirige a la página de docentes después de borrar
+        raise web.seeother('/docentes')  # Redirige a la página de docentes después de borrar

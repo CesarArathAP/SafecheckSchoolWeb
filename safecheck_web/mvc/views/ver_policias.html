@@ -1,10 +1,10 @@
-$def with(docente)
+$def with(policia)
 
 <div class="p-3 mb-2 bg-success text-white">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h2 class="m-0">Detalles del Docente > $docente['nombre']</h2>
+                <h2 class="m-0">Detalles del Policía > $policia['nombre']</h2>
             </div>
             <div class="col-md-6 text-md-end">
                 <nav class="navbar navbar-expand-md navbar-dark">
@@ -42,34 +42,25 @@ $def with(docente)
 <div class="container">
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-body">
-            <div class="row">
+            <div class="center">
                 <div class="col-md-8">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Nombre:</strong> $docente['nombre']</li>
-                        <li class="list-group-item"><strong>Apellido Paterno:</strong> $docente['apellido_paterno']</li>
-                        <li class="list-group-item"><strong>Apellido Materno:</strong> $docente['apellido_materno']</li>
-                        <li class="list-group-item"><strong>Teléfono:</strong> $docente['telefono']</li>
-                        <li class="list-group-item"><strong>NSS:</strong> $docente['nss']</li>
-                        <li class="list-group-item"><strong>Correo Electrónico:</strong> $docente['email']</li>
-                        <li class="list-group-item"><strong>Nombre de Usuario:</strong> $docente['username']</li>
-                        <li class="list-group-item"><strong>Carreras:</strong></li>
-                        <li class="list-group-item">
-                            <ul>
-                                $for carrera in docente['carreras']:
-                                    <li>$carrera['nombre']</li>
-                            </ul>
-                        </li>
-
+                        <li class="list-group-item"><strong>Nombre:</strong> $policia['nombre']</li>
+                        <li class="list-group-item"><strong>Apellidos:</strong> $policia['apellidos']</li>
+                        <li class="list-group-item"><strong>Teléfono:</strong> $policia['telefono']</li>
+                        <li class="list-group-item"><strong>Nombre de Usuario:</strong> $policia['username']</li>
+                        <!-- Puedes añadir más detalles según sea necesario -->
+                    </ul>
                 </div>
-            </div>
-            <div>
                 <div>
-                    <a href="/docentes" class="btn btn-primary">
+                    <a href="/policias" class="btn btn-primary">
                         <i class="bi bi-arrow-return-left"></i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
                         </svg> 
                     </a>
                 </div>
+            </div>
+        </div>
     </div>
 </div>

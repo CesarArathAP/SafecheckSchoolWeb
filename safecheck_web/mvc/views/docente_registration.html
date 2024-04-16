@@ -1,6 +1,6 @@
 $def with()
 
-<div class="container-fluid bg-primary text-white p-3 mb-4">
+<div class="p-3 mb-2 bg-success text-white">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -17,19 +17,20 @@ $def with()
                                 <a class="nav-link" href="/index">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/coordinadores">Coordinadores</a>
+                                <a class="nav-link" href="/registros">Personal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/docentes">Docentes</a>
+                                <a class="nav-link" href="/visitas">Visitas Externas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/new">Nuevo Registro</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/notifications">Notificaciones</a>
+                                <a class="nav-link" href="/notifications">Reportes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Salir</a>
+                            </li> 
                         </ul>
                     </div>
                 </nav>
@@ -64,12 +65,12 @@ $def with()
 
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Teléfono:</label>
-                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                    <input type="number" class="form-control" id="telefono" name="telefono" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="nss" class="form-label">NSS:</label>
-                    <input type="text" class="form-control" id="nss" name="nss" required>
+                    <input type="number" class="form-control" id="nss" name="nss" required>
                 </div>
 
                 <div class="mb-3">
@@ -157,10 +158,23 @@ $def with()
                             <textarea class="form-control" id="carreraSeleccionada" name="carrera" readonly></textarea>
                         </div>                        
                     </div>
-                </div>                                                                               
-                <div class="d-grid gap-2 d-md-block text-end">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-secondary" onclick="window.location.href='/new'">Cancelar</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-floppy2-fill"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy2-fill" viewBox="0 0 16 16">
+                                <path d="M12 2h-2v3h2z"/>
+                                <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1"/>
+                              </svg>
+                        </button>
+                    </div>
+                    <div>
+                        <a href="/new" class="btn btn-primary">
+                            <i class="bi bi-arrow-return-left"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+                            </svg> 
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>

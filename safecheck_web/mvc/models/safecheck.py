@@ -12,6 +12,7 @@ class SafeCheck:
     def __init__(self):
         self.client = MongoClient('mongodb://localhost:27017/')
         self.db = self.client['safecheckschool']
+        self.admin_collection = self.db['admin']
         self.directores_collection = self.db['directores']
         self.carreras_collection = self.db['carreras']
         self.visitas_collection = self.db['visitas']
@@ -23,6 +24,15 @@ class SafeCheck:
     def get_director_by_username(self, username):
         return self.directores_collection.find_one({"username": username})
     
+    def login(self, username, password):
+        admin_user = self.admin_collection.find_one({"username": username})
+
+        if admin_user and admin_user["password_md5"] == password:
+            return admin_user, "admin"
+        else:
+            return None, None
+        
+        
     # METODO PARA OBTENER LAS ESPECIALIDADES DE LAS CARRERAS QUE TIENE ACARGO EL DIRECTOR
 
     def get_especialidades_by_carrera_id(self, carrera_id):
@@ -250,8 +260,29 @@ class SafeCheck:
         except PyMongoError as e:
             print("Error al eliminar docente:", e)
             return False  # Retorna False si ocurrió algún error durante la eliminación
+        
 
-    
+
+#metodo para ver a todos los docentes
+    def obtener_docentess(self):
+        try:
+            docentess = list(self.docentes_collection.find())
+            return docentess
+        except PyMongoError as e:
+            print("Error al obtener los coordinadores:", e)
+            return []
+        
+
+#metodo para ver a todos los docentes
+    def obtener_policias(self):
+        try:
+            policias = list(self.vigilancia_collection.find())
+            return policias
+        except PyMongoError as e:
+            print("Error al obtener los coordinadores:", e)
+            return []
+        
+        
 #metodo para obtener coordinadores
     def obtener_coordinadores(self):
         try:
@@ -262,7 +293,7 @@ class SafeCheck:
             return []
 
 
-
+#metodos para ver,editar y borra a los coordinadores:
     def get_coordinador_by_username(self, username):
         return self.directores_collection.find_one({'username': username})
 
@@ -326,3 +357,47 @@ class SafeCheck:
         except PyMongoError as e:
             print("Error al registrar coordinador:", e)
             return False
+        
+
+
+#metodo de ver,editar y borrar a los policias o vigilantes:
+    def obtener_policia_por_username(self, username):
+        return self.vigilancia_collection.find_one({"username": username})
+    
+    def actualizar_policia(self, username, nombre, apellidos, telefono, new_username):
+        try:
+            # Buscar al policía por su nombre de usuario y actualizar sus datos
+            result = self.vigilancia_collection.update_one(
+                {"username": username},  
+                {"$set": {
+                    "nombre": nombre,
+                    "apellidos": apellidos,
+                    "telefono": telefono,
+                    "username": new_username  # Actualizamos el nombre de usuario
+                }}
+            )
+            # Verificar si se actualizó correctamente
+            if result.modified_count == 1:
+                return True  # Retorna True si la actualización fue exitosa
+            else:
+                return False  # Retorna False si no se encontró el policía para actualizar
+        except PyMongoError as e:
+            print("Error al actualizar policía:", e)
+            return False  # Retorna False si ocurrió algún error durante la actualización
+        
+    def eliminar_policia(self, username):
+        try:
+            # Eliminar al policía por su nombre de usuario
+            result = self.vigilancia_collection.delete_one({"username": username})
+            # Verificar si se eliminó correctamente
+            if result.deleted_count == 1:
+                return True  # Retorna True si la eliminación fue exitosa
+            else:
+                return False  # Retorna False si no se encontró el policía para eliminar
+        except PyMongoError as e:
+            print("Error al eliminar policía:", e)
+            return False  # Retorna False si ocurrió algún error durante la eliminación
+
+
+
+
